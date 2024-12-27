@@ -50,7 +50,7 @@
 
 .nav {
   grid-area: nav;
-  background-color: rgb(38, 107, 157);
+  background-color: rgb(67, 148, 206);
   color: white;
   display: flex;
   align-items: center;
