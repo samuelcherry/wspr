@@ -43,6 +43,11 @@
   margin-top: 1rem;
 }
 
+.nav button {
+  background-color: rgb(38, 107, 157);
+  margin-top: 1rem;
+}
+
 .nav {
   grid-area: nav;
   background-color: rgb(38, 107, 157);
