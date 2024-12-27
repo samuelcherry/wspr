@@ -4,7 +4,7 @@ import Login from "../Login/Login";
 
 function Home({ setUsername, setToken }) {
   return (
-    <div>
+    <div className="home">
       <h1>Welcome to the Homepage</h1>
       <Login setUsername={setUsername} setToken={setToken} />
       <Link to="/register" setToken={setToken}>

@@ -26,23 +26,8 @@ const seed = async () => {
     await prisma.post.createMany({ data: posts });
   };
 
-  const createComments = async () => {
-    const comments = [
-      { postId: 1, userId: 1, body: "See you space cowboy" },
-      { postId: 1, userId: 2, body: "Party Party Party" },
-      { postId: 1, userId: 2, body: "Brat Summer" },
-      { postId: 1, userId: 3, body: "Let's go to the Park" },
-      { postId: 1, userId: 4, body: "Here's the thing about BTTF" },
-      { postId: 1, userId: 2, body: "Brat Summer" },
-      { postId: 1, userId: 3, body: "Let's go to the Park" },
-      { postId: 1, userId: 4, body: "Here's the thing about BTTF" }
-    ];
-    await prisma.comment.createMany({ data: comments });
-  };
-
   await createUsers();
   await createPosts();
-  await createComments();
 };
 seed()
   .then(async () => await prisma.$disconnect())

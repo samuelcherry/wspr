@@ -1,13 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const prisma = require("./prisma");
 const loginRoute = require("./api/login");
 
 const app = express();
 const PORT = 3000;
-const SECRET_KEY = "secret";
 
 app.use(cors());
 app.use(express.json());

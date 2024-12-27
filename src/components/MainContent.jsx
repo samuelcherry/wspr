@@ -1,7 +1,6 @@
 import Post from "./Post";
 import Statusbar from "./Statusbar";
 import { useState, useEffect } from "react";
-import Login from "../Login/Login";
 
 export default function MainContent({ className, username, userId }) {
   const [posts, setPosts] = useState([]);

@@ -35,14 +35,18 @@ export default function Statusbar({ className, username, userId, fetchPosts }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
-      <textarea
-        required
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        placeholder="What's on your mind?"
-      />
-      <button type="submit">Post</button>
-    </form>
+    <>
+      <div className={className}>
+        <textarea
+          required
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder="What's on your mind?"
+        />
+        <button type="submit" onClick={handleSubmit}>
+          Post
+        </button>
+      </div>
+    </>
   );
 }

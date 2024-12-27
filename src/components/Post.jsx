@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
-
 function Post({
   className,
   username,
@@ -12,17 +8,6 @@ function Post({
   userId,
   postUserId
 }) {
-  const [isLiked, setIsLiked] = useState(false);
-  const [comment, setComment] = useState("");
-
-  const handleLikeToggle = () => {
-    setIsLiked((prev) => !prev);
-  };
-
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
-  };
-
   async function deletePost(postId) {
     try {
       console.log(postId);

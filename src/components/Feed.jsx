@@ -1,9 +1,9 @@
 import Nav from "./Nav";
 import MainContent from "./MainContent";
-import React, { useState } from "react";
+import React from "react";
 import Login from "../Login/Login";
 
-function setToken(userToken) {
+function setToken() {
   sessionStorage.setItem("token", token);
 }
 

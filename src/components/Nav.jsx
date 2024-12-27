@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Nav({ className, setToken, username, setUsername }) {
+export default function Nav({ className, username, setUsername }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
