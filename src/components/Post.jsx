@@ -33,7 +33,7 @@ function Post({
       <div className="post-header">
         <img
           className="post-avatar"
-          src="public\profile picture.jpg"
+          src="public\profile-picture.jpg"
           alt={`${username}'s avatar`}
         />
         <span className="post-username">{username}</span>
