@@ -1,13 +1,21 @@
 const express = require("express");
+const cors = require("cors");
+const jwt = require("jsonwebtoken");
+const bodyParser = require("body-parser");
+const prisma = require("./prisma");
+const loginRoute = require("./api/login");
+
 const app = express();
 const PORT = 3000;
+const SECRET_KEY = "secret";
 
-const prisma = require("./prisma");
-
+app.use(cors());
 app.use(express.json());
 app.use(require("morgan")("dev"));
-
+app.use(bodyParser.json());
 app.use("/api", require("./api"));
+
+app.use("/api/login", loginRoute);
 
 app.use((err, req, res, next) => {
   console.error(err);

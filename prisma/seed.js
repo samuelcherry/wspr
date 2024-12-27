@@ -3,11 +3,11 @@ const prisma = require("../prisma");
 const seed = async () => {
   const createUsers = async () => {
     const users = [
-      { name: "Sam" },
-      { name: "Sophie" },
-      { name: "Dipper" },
-      { name: "Zach" },
-      { name: "Carrie" }
+      { username: "Sam", password: "password1" },
+      { username: "Sophie", password: "password2" },
+      { username: "Dipper", password: "password3" },
+      { username: "Zach", password: "password4" },
+      { username: "Carrie", password: "password5" }
     ];
     await prisma.user.createMany({ data: users });
   };

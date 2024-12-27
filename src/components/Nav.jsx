@@ -1,33 +1,38 @@
-function Nav({ className }) {
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function Nav({ className, setToken, username, setUsername }) {
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      console.log("storedUsername: ", storedUsername);
+      setUsername(storedUsername);
+    }
+  }, [setUsername]);
+
+  useEffect(() => {
+    if (username) {
+      localStorage.setItem("username", username);
+    }
+  }, [username]);
+
+  async function handleLogout(e) {
+    e.preventDefault();
+    localStorage.removeItem("username");
+    setUsername("");
+    setPassword("");
+    navigate("/");
+  }
+
   return (
     <nav className={className}>
-      <h2>welcome</h2>
+      <h2>welcome {username || "Guest"}</h2>
       <div>
-        <form>
-          <label htmlFor="username" style={{ display: "none" }}>
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-          ></input>
-          <label htmlFor="password" style={{ display: "none" }}>
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-          ></input>
-          <button type="submit">Login</button>
-          <button className="profile-btn">Profile</button>
-        </form>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </nav>
   );
 }
-
-export default Nav;
