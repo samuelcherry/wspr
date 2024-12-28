@@ -7,7 +7,7 @@ function Home({ setUsername, setToken }) {
     <div className="home">
       <h1>Welcome to the Homepage</h1>
       <Login setUsername={setUsername} setToken={setToken} />
-      <Link to="/register" setToken={setToken}>
+      <Link to="/register">
         <button className="profile-btn">Register</button>
       </Link>
     </div>
