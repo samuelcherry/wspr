@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Statusbar({ className, username, userId, fetchPosts }) {
+export default function Statusbar({ className, userId, fetchPosts }) {
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
 

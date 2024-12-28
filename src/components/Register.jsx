@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [message, setMessage] = useState({ success: "", error: null });
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -16,54 +14,45 @@ function Register() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          username,
-          password
-        })
+        body: JSON.stringify(formData)
       });
       const result = await response.json();
-      console.log("Signup Result: ", result);
-      setSuccessMessage(result.message);
-      setUsername("");
-      setPassword("");
+      if (!response.ok)
+        throw new Error(result.message || "Failed to submit the post.");
+      setMessage({ success: result.message, error: null });
+      setFormData({ username: "", password: "" });
       navigate("/");
     } catch (error) {
-      setError(error.message);
+      setMessage({ success: "", error: error.message });
     }
   }
 
   return (
     <div className="register">
-      <h1>Register Here</h1>
-      <label htmlFor="username" style={{ display: "none" }}>
-        Username
-      </label>
-      <input
-        required
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Username"
-      />
-      <label htmlFor="password" style={{ display: "none" }}>
-        Password
-      </label>
-      <input
-        type="password"
-        required
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        id="password"
-        name="password"
-        placeholder="Password"
-      />
-      <button type="submit" onClick={handleSubmit}>
-        Register
-      </button>
+      <form onSubmit={handleSubmit}>
+        <h1>Register Here</h1>
+        <input
+          required
+          value={formData.username}
+          onChange={(e) =>
+            setFormData({ ...formData, username: e.target.value })
+          }
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          type="password"
+          required
+          value={formData.password}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
+          placeholder="Password"
+        />
+        <button type="submit">Register</button>
+      </form>
+      {message.success && <p>{message.success}</p>}
+      {message.error && <p>{message.error}</p>}
     </div>
   );
 }
