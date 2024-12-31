@@ -1,4 +1,4 @@
-const prisma = require("../prisma");
+const prisma = require(".");
 
 const seed = async () => {
   const createUsers = async () => {
