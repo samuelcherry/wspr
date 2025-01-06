@@ -23,7 +23,6 @@ export default function MainContent({ className, username, userId }) {
     <main className={className}>
       <Statusbar
         className="Statusbar"
-        username={username}
         userId={userId}
         fetchPosts={fetchPosts}
       />
@@ -36,7 +35,6 @@ export default function MainContent({ className, username, userId }) {
             className="post"
             username={post.user.username}
             content={post.body}
-            fetchPosts={fetchPosts}
             postId={post.id}
             posts={posts}
             setPosts={setPosts}
