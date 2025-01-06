@@ -35,10 +35,7 @@ const Login = ({ setUsername, setToken }) => {
       if (token) {
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("userId", userId);
-        console.log("sessionStorage: ", userId);
-
         setToken(token);
-        console.log("token: ", token);
         setUsername(username);
         navigate("/feed");
       } else {
